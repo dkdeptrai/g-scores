@@ -1,0 +1,3 @@
+<% @top_student_scores.each do |score|%>
+  <%= render partial: 'student_scores/group_a_score', locals: { student_score: score } %>
+<% end %>

@@ -1,0 +1,52 @@
+<%= turbo_frame_tag :search_result, class: "p-8" do %>
+  <div class="flex flex-col rounded-lg bg-white p-4 shadow">
+    <span class="my-4 text-xl font-bold">Detailed Scores</span>
+
+    <% if student_score.present? %>
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div class="rounded-lg border p-4">
+          <span class="mb-2 block text-sm font-bold text-gray-700">Toan</span>
+          <span class="block text-lg text-gray-900"><%= student_score.toan ? student_score.toan : "n/a" %></span>
+        </div>
+        <div class="rounded-lg border p-4">
+          <span class="mb-2 block text-sm font-bold text-gray-700">Ngu Van</span>
+          <span class="block text-lg text-gray-900"><%= student_score.ngu_van ? student_score.ngu_van : "n/a" %></span>
+        </div>
+        <div class="rounded-lg border p-4">
+          <span class="mb-2 block text-sm font-bold text-gray-700">Ngoai Ngu</span>
+          <span class="block text-lg text-gray-900"><%= student_score.ngoai_ngu ? student_score.ngoai_ngu : "n/a" %></span>
+        </div>
+        <div class="rounded-lg border p-4">
+          <span class="mb-2 block text-sm font-bold text-gray-700">Vat Li</span>
+          <span class="block text-lg text-gray-900"><%= student_score.vat_li ? student_score.vat_li : "n/a" %></span>
+        </div>
+        <div class="rounded-lg border p-4">
+          <span class="mb-2 block text-sm font-bold text-gray-700">Hoa Hoc</span>
+          <span class="block text-lg text-gray-900"><%= student_score.hoa_hoc ? student_score.hoa_hoc : "n/a" %></span>
+        </div>
+        <div class="rounded-lg border p-4">
+          <span class="mb-2 block text-sm font-bold text-gray-700">Sinh Hoc</span>
+          <span class="block text-lg text-gray-900"><%= student_score.sinh_hoc ? student_score.sinh_hoc : "n/a" %></span>
+        </div>
+        <div class="rounded-lg border p-4">
+          <span class="mb-2 block text-sm font-bold text-gray-700">Lich Su</span>
+          <span class="block text-lg text-gray-900"><%= student_score.lich_su ? student_score.lich_su : "n/a" %></span>
+        </div>
+        <div class="rounded-lg border p-4">
+          <span class="mb-2 block text-sm font-bold text-gray-700">Dia Li</span>
+          <span class="block text-lg text-gray-900"><%= student_score.dia_li ? student_score.dia_li : "n/a" %></span>
+        </div>
+        <div class="rounded-lg border p-4">
+          <span class="mb-2 block text-sm font-bold text-gray-700">GDCD</span>
+          <span class="block text-lg text-gray-900"><%= student_score.gdcd ? student_score.gdcd : "n/a" %></span>
+        </div>
+        <div class="rounded-lg border p-4">
+          <span class="mb-2 block text-sm font-bold text-gray-700">Ma Ngoai Ngu</span>
+          <span class="block text-lg text-gray-900"><%= student_score.ma_ngoai_ngu ? student_score.ma_ngoai_ngu : "n/a" %></span>
+        </div>
+      </div>
+    <% else %>
+      <span>No Student Found</span>
+    <% end %>
+  </div>
+<% end %>
