@@ -11,18 +11,18 @@
   <%= javascript_importmap_tags %>
 </head>
 
-<body class="bg-gray-100 h-[100vh] min-w-[400px] overflow-scroll" data-controller="navbar">
+<body class="overflow-y-hidden bg-gray-100 h-[100vh] min-w-[400px]" data-controller="navbar">
 <%= render "layouts/header" %>
 
-<main class="flex flex-row h-full w-full">
-  <div class="hidden absolute inset-0 bg-black bg-opacity-50 z-40" data-navbar-target="overlay" data-action="click->navbar#close"></div>
+<main class="flex h-full w-full flex-row mt-[100px]">
 
-  <div class="h-screen min-h-[1980px]">
     <%= render "layouts/sidebar" %>
-  </div>
 
-  <div class="flex flex-col w-full h-screen overflow-y-scroll">
-    <%= render "layouts/notice" %>
+  <div class="flex h-screen w-full flex-col overflow-y-scroll pb-[200px]">
+    <div class="fixed inset-0 z-10 hidden bg-black bg-opacity-25 opacity-0 transition-opacity duration-300 ease-linear"
+         data-navbar-target="overlay">
+    </div>
+      <%= render "layouts/notice" %>
     <%= yield %>
   </div>
 

@@ -1,5 +1,6 @@
-<nav class="hidden md:flex h-full w-64 flex-col gap-8 bg-gradient-to-b from-yellow-400 to-cyan-700 px-2 py-8 text-xl"
-     data-navbar-target="menu">
+<nav class="flex h-screen min-h-[1980px] w-92 transform flex-col gap-8 bg-gradient-to-b from-yellow-400 to-cyan-700 px-2 py-8 text-xl transition-transform duration-300 ease-in-out"
+     data-navbar-target="menu"
+>
   <span class="self-center font-bold">Menu</span>
   <%= link_to "Report", student_scores_report_path %>
   <%= link_to "Search Scores", student_scores_search_path %>
