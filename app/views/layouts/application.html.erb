@@ -14,15 +14,14 @@
 <body class="bg-gray-100 h-[100vh] min-w-[400px] overflow-scroll" data-controller="navbar">
 <%= render "layouts/header" %>
 
-<main class="flex flex-row w-full">
+<main class="flex flex-row h-full w-full">
   <div class="hidden absolute inset-0 bg-black bg-opacity-50 z-40" data-navbar-target="overlay" data-action="click->navbar#close"></div>
 
-
-  <div class="fixed">
+  <div class="h-screen min-h-[1980px]">
     <%= render "layouts/sidebar" %>
   </div>
 
-  <div class="flex flex-col w-full overflow-y-scroll">
+  <div class="flex flex-col w-full h-screen overflow-y-scroll">
     <%= render "layouts/notice" %>
     <%= yield %>
   </div>
