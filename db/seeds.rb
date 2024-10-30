@@ -1,4 +1,4 @@
-BATCH_SIZE = 100000
+BATCH_SIZE = 100
 StudentScore.delete_all
 total_count = 0
 start_time = Time.now
