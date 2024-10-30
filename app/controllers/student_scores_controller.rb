@@ -3,6 +3,7 @@ class StudentScoresController < ApplicationController
   def search
 
   end
+
   def search_results
     if params[:sbd].blank?
       return turbo_stream.replace(:notice, partial: 'layouts/notice', locals: { notice: "Please enter SBD to search" })
@@ -27,12 +28,16 @@ class StudentScoresController < ApplicationController
   end
 
   def report
-    @report = StudentScore.report
+    @report = Rails.cache.fetch('student_scores/report', expires_in: 24.hours) do
+      StudentScore.report
+    end
     render :report
   end
 
   def group_a_top
-    @top_student_scores = StudentScore.group_a_top
+    @top_student_scores = Rails.cache.fetch('student_scores/group_a_top', expires_in: 24.hours) do
+      StudentScore.group_a_top
+    end
     render :group_a_top
   end
 end

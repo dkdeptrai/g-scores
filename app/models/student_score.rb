@@ -1,4 +1,7 @@
 class StudentScore < ApplicationRecord
+
+  # TODO: Implement invalidating the cache when data is changed
+
   self.primary_key = 'sbd'
 
   def self.group_a_top
