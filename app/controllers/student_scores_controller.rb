@@ -1,32 +1,43 @@
 class StudentScoresController < ApplicationController
   include UtilsFunctionsConcern
 
+  before_action :input_validation, only: :search_results
+
   def search
 
   end
 
   def search_results
-    if params[:sbd].blank?
-      return turbo_stream.replace(:notice, partial: 'layouts/notice', locals: { notice: "Please enter SBD to search" })
-    end
-
     @student_score = StudentScore.find_by(sbd: params[:sbd])
     Rails.logger.debug("Student score in controller: #{@student_score}")
 
     respond_to do |format|
       format.turbo_stream do
-        render turbo_stream: turbo_stream.replace(:search_result, partial: 'student_scores/student_score', locals: { student_score: @student_score })
+        if @student_score
+          render turbo_stream: turbo_stream.replace(
+            :search_result,
+            partial: 'student_scores/student_score',
+            locals: { student_score: @student_score }
+          )
+        else
+          render turbo_stream: [
+            turbo_stream.replace(:alert, partial: 'layouts/alert', locals: { alert: "No student score found with SBD: #{params[:sbd]}" }),
+            turbo_stream.replace(:search_result, partial: 'student_scores/student_score', locals: { student_score: @student_score })
+          ]
+        end
       end
+
       format.html do
         if @student_score
           render :search
         else
-          flash.now[:alert] = "No student score found with SBD: #{params[:sbd]}"
+          flash.now[:notice] = "No student score found with SBD: #{params[:sbd]}"
           render :search
         end
       end
     end
   end
+
 
   def report
     @report = REDIS_CLIENT.get('student_scores/report')
@@ -55,5 +66,12 @@ class StudentScoresController < ApplicationController
     Rails.logger.debug("Top student scores: #{@top_student_scores}")
 
     render :group_a_top
+  end
+
+  def input_validation
+    if params[:sbd].empty?
+      Rails.logger.debug("SBD is empty")
+      render turbo_stream: turbo_stream.replace(:alert, partial: 'layouts/alert', locals: { alert: "Please Enter SBD" })
+    end
   end
 end

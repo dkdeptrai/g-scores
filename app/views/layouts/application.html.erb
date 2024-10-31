@@ -22,7 +22,16 @@
     <div class="fixed inset-0 z-10 hidden bg-black bg-opacity-25 opacity-0 transition-opacity duration-300 ease-linear"
          data-navbar-target="overlay">
     </div>
-      <%= render "layouts/notice" %>
+    <%= turbo_frame_tag :notice do %>
+      <% if notice.present? %>
+        <%= render partial: "layouts/notice", locals: { notice: notice} %>
+      <% end %>
+    <% end %>
+    <%= turbo_frame_tag :alert do %>
+      <% if alert.present? %>
+        <%= render partial: "layouts/alert", locals: { alert: alert} %>
+      <% end %>
+    <% end %>
     <%= yield %>
   </div>
 

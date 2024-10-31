@@ -1,6 +1,6 @@
-<% if flash[:alert].present? %>
-  <p class="py-2 px-3 bg-red-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="alert">
-    <%= flash[:alert] %>
+<% if alert.present? %>
+  <p class="mb-5 w-full inline-block rounded-lg bg-red-500 p-4 text-xl font-medium text-white" id="alert">
+    <%= alert %>
   </p>
 <% else %>
   <div id="alert"></div>

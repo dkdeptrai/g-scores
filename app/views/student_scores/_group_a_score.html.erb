@@ -1,9 +1,9 @@
 <%= turbo_frame_tag :search_result do %>
-  <div class="flex flex-col rounded-lg bg-white p-4 shadow">
+  <div class="flex flex-col rounded-lg bg-white p-4 my-4 shadow">
     <span class="mb-4 text-xl font-bold">Detailed Scores</span>
 
     <% if student_score.present? %>
-      <div>Total: <%= student_score[:group_a_score] %></div>
+      <div>SBD: <%= student_score[:sbd] %> - <%= student_score[:group_a_score] %></div>
       <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         <div class="rounded-lg border p-4">
           <span class="mb-2 block text-sm font-bold text-gray-700">Toan</span>
