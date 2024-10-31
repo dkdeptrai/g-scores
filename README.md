@@ -1,32 +1,55 @@
 # G-Scores
 
-G-Scores is a Ruby on Rails to search 
+G-Scores is a Ruby on Rails to search and see some analytics of the Viet Nam High School Graduation Examination 2024
 
 ### Requirements
 
 - Name: g-scores
-- Ruby version: 3.3.4
-- Rails version: 7.1.4
-- Bundler version: 2.55.2
-- Database: PostgreSQL
+- Ruby version: [3.3.4](https://www.ruby-lang.org/en/downloads/releases/)
+- Rails version: [7.1.4](https://rubyonrails.org/)
+- Bundler version: [2.55.2](https://bundler.io/)
+- Database: [PostgreSQL](https://www.postgresql.org/)
+- Redis: [6.2.6](https://redis.io/)
 
 ### Installation Steps
 
-1. Clone the repository:
+1. Clone the repository
+
 ```bash
-git clone https://github.com/dkdeptrai/g-scores.git
+git clone https://github.com/dkdeptrai/g-scores
 ```
 
-2. Install dependencies:
+2. Install dependencies
+
 ```bash
 bundle install
 ```
-3. Database setup:
+
+3. Create database
+
 ```bash
-rails db:create db:migrate db:seed
+rails db:create
 ```
 
-4. Start the server:
+4. Run migrations
+
+```bash
+rails db:migrate
+```
+
+5. Run the seeds.rb file
+
+```bash
+rails db:seed
+```
+
+6. Start the server
+
 ```bash
 rails s
 ```
+
+7. Open the browser and go to `http://localhost:3000`
+
+### Live Demo
+You can access the live demo [here](https://g-scores.fly.dev/)
