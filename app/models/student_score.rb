@@ -11,7 +11,6 @@ class StudentScore < ApplicationRecord
       .limit(10)
   end
 
-
   def self.report
     report = {}
 

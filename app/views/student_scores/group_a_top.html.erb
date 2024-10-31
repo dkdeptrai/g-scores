@@ -1,3 +1,6 @@
-<% @top_student_scores.each do |score|%>
-  <%= render partial: 'student_scores/group_a_score', locals: { student_score: score } %>
-<% end %>
+<div class="px-4 py-8">
+  <h1 class="mb-8 text-2xl font-bold">Top Students Of Group A By Total Score</h1>
+  <% @top_student_scores.each do |score| %>
+    <%= render partial: 'student_scores/group_a_score', locals: { student_score: score } %>
+  <% end %>
+</div>

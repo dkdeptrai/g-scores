@@ -1,4 +1,5 @@
 class StudentScoresController < ApplicationController
+  include UtilsFunctionsConcern
 
   def search
 
@@ -28,16 +29,31 @@ class StudentScoresController < ApplicationController
   end
 
   def report
-    @report = Rails.cache.fetch('student_scores/report', expires_in: 24.hours) do
-      StudentScore.report
+    @report = REDIS_CLIENT.get('student_scores/report')
+    if @report.nil?
+      @report = StudentScore.report
+      REDIS_CLIENT.set('student_scores/report', @report.to_json, ex: 24.hours)
+    else
+      @report = convert_to_symbol_keys(JSON.parse(@report))
     end
     render :report
   end
 
   def group_a_top
-    @top_student_scores = Rails.cache.fetch('student_scores/group_a_top', expires_in: 24.hours) do
-      StudentScore.group_a_top
+    @top_student_scores = REDIS_CLIENT.get('student_scores/group_a_top')
+    if @top_student_scores.nil?
+      @top_student_scores = StudentScore.group_a_top
+      REDIS_CLIENT.set('student_scores/group_a_top', @top_student_scores.to_json, ex: 24.hours)
+    else
+      res = []
+      @top_student_scores = JSON.parse(@top_student_scores)
+      @top_student_scores.each do |student_score|
+        res << convert_to_symbol_keys(student_score)
+      end
+      @top_student_scores = res
     end
+    Rails.logger.debug("Top student scores: #{@top_student_scores}")
+
     render :group_a_top
   end
 end
