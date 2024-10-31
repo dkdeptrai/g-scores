@@ -1,6 +1,6 @@
 # G-Scores
 
-G-Scores is a Ruby on Rails to search and see some analytics of the Viet Nam High School Graduation Examination 2024
+G-Scores is a Ruby on Rails application to search and see some analytics of the Viet Nam High School Graduation Examination 2024
 
 ### Requirements
 
@@ -37,7 +37,7 @@ rails db:create
 rails db:migrate
 ```
 
-5. Run the seeds.rb file
+5. Run the seeds.rb file (might take a while because of large dataset)
 
 ```bash
 rails db:seed
