@@ -9,7 +9,7 @@ G-Scores is a Ruby on Rails application to search and see some analytics of the 
 - Rails version: [7.1.4](https://rubyonrails.org/)
 - Bundler version: [2.55.2](https://bundler.io/)
 - Database: [PostgreSQL](https://www.postgresql.org/)
-- Redis: [6.2.6](https://redis.io/)
+- Redis: [6.2.6](https://redis.io/) Make sure you have a local redis instance running at port :6379
 
 ### Installation Steps
 
